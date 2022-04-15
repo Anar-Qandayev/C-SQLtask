@@ -17,7 +17,7 @@ namespace AdoNet
             //GetGenresById(4);
            // GetSeansById(2);
             //GetTicketsById(1);
-
+           // GetUpdateHalls(1);
             //DeleteCustomers(3);
         }
         static void GetCustomersById(int id)
@@ -120,6 +120,18 @@ namespace AdoNet
                 //    //    Console.WriteLine("Something went wrong");
                 //    //}
                 //}
+            }
+        }
+         static void GetUpdateHalls(int id)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string command = $"UPDATE Hall SET Name='InvestAZ'  where Id={id}";
+                using (SqlCommand comm = new SqlCommand(command, conn))
+                {
+                    Console.WriteLine(comm.ExecuteNonQuery());
+                }
             }
         }
         //static void DeleteCustomers(int id)
